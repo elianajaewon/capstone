@@ -21,5 +21,3 @@
 # Dog.create(breed: "Dalmation", size: "medium", grooming: "sheds a lot", bark_level: "somewhat noisy", kids: "yes", pets: "yes", exercise: "very active")
 
 # Dog.create(breed: "English Cocker Spaniel", size: "small", grooming: "sheds a little", bark_level: "very noisy", kids: "no", pets: "yes", exercise: "somewhat active")
-
-# Dog.create(breed: "Affenpinscher", size: "tiny", grooming: "hypoallergenic", bark_level: "quiet", kids: "yes", pets: "yes", exercise: "very active")
