@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def show
     user_id = params["id"]
-    user = User.find_by(id: user_id)
+    if user_id == "me"
+      user = current_user
+    else
+      user = User.find_by(id: user_id)
+    end
     render json: {message: user.as_json}  
   end
 
@@ -22,6 +26,12 @@ class UsersController < ApplicationController
   end 
 
   def update
+    # user_id = params["id"]
+    # if user_id == "me"
+    #   user = current_user
+    # else 
+    #   user = User.find_by(id: user_id)
+    # end
     user = current_user
     user.zip_code = params[:zip_code]
     user.work_hours = params[:work_hours]

@@ -53,7 +53,15 @@ class User < ApplicationRecord
       id: id,
       name: name,
       email: email,
-      dogs: dogs_with_incompatibilities
+      dogs: dogs_with_incompatibilities,
+      zip_code: zip_code,
+      work_hours: work_hours,
+      home_type: home_type,
+      allergies: allergies,
+      noise_level: noise_level,
+      kids: kids,
+      pets: pets,
+      activity_level: activity_level,
     }
   end
 end

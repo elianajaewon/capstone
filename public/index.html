@@ -77,7 +77,7 @@
                   <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Survey</a>
                     <ul class="dropdown-menu">
                       <li><a href="/#/survey">Take Survey</a></li>
-                      <li><a href="/#/user">View Matches</a></li>
+                      <li><a href="/#/users/me">View Matches</a></li>
                     </ul>
                   </li>
                   <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Breeds</a>
@@ -90,72 +90,6 @@
               </div>
             </div>
           </nav>
-
-          <!-- <div class="main showcase-page">
-            <section class="module-extra-small bg-dark">
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-6 col-md-8 col-lg-9">
-                    <div class="callout-text font-alt">
-                      <h4 style="margin-top: 0px; font-;">Start Creating Beautiful Websites</h4>
-                      <p style="margin-bottom: 0px;">Download Titan Free today!</p>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="callout-btn-box"><a class="btn btn-border-w btn-circle" href="https://themewagon.com/themes/titan/">Downlaod Free</a></div>
-                  </div>
-                </div>
-              </div>
-            </section> -->
-           <!--  <section class="module-medium" id="demos">
-              <div class="container">
-                <div class="row multi-columns-row">
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_mp_fullscreen_video_background.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/main_demo.jpg" alt="Main Demo"></div>
-                      <h3 class="content-box-title font-serif">Main Demo</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_agency.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/agency.jpg" alt="Agency"></div>
-                      <h3 class="content-box-title font-serif">Agency</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_portfolio.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/portfolio.jpg" alt="Portfolio"></div>
-                      <h3 class="content-box-title font-serif">Portfolio</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_restaurant.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/restaurant.jpg" alt="Restaurant"></div>
-                      <h3 class="content-box-title font-serif">Restaurant</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_finance.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/finance.jpg" alt="Finance"></div>
-                      <h3 class="content-box-title font-serif">Finance</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_landing.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/landing.jpg" alt="Landing"></div>
-                      <h3 class="content-box-title font-serif">Landing</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_photography.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/photography.jpg" alt="Photography"></div>
-                      <h3 class="content-box-title font-serif">Photography</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_shop.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/shop.jpg" alt="Shop"></div>
-                      <h3 class="content-box-title font-serif">Shop</h3></a></div>
-                  <div class="col-md-4 col-sm-6 col-xs-12"><a class="content-box" href="index_op_fullscreen_gradient_overlay.html">
-                      <div class="content-box-image"><img src="assets/images/screenshots/one_page.jpg" alt="One Page"></div>
-                      <h3 class="content-box-title font-serif">One Page</h3></a></div>
-                </div>
-              </div>
-            </section>
-            <section class="module-extra-small bg-dark">
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-6 col-md-8 col-lg-9">
-                    <div class="callout-text font-alt">
-                      <h4 style="margin-top: 0px;">Start Creating Beautiful Websites</h4>
-                      <p style="margin-bottom: 0px;">Download Titan Free today!</p>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="callout-btn-box"><a class="btn btn-border-w btn-circle" href="https://themewagon.com/themes/titan/">Downlaod Free</a></div>
-                  </div>
-                </div>
-              </div>
-            </section> -->
-          <!-- </div> -->
           <router-view></router-view>
           <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
         </main>
@@ -184,9 +118,6 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js" defer></script>
-    <!-- <script src="https://unpkg.com/vue/dist/vue.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 
   </body>
 </html>
@@ -259,7 +190,7 @@
             <label>Password:</label>
             <input type="password" class="form-control" v-model="password">
           </div>
-          <button class="btn btn-border-w btn-round" v-on:click="submit()"><a href="/#/">Submit</a></button>
+          <a class="btn btn-border-w btn-round" v-on:click="submit()" href="/#/">Submit</a>
         </div>
       </div>
     </div>
@@ -272,7 +203,9 @@
       <div class="caption-content">
         <div class="container, font-alt mb-30 titan-title-size-1">
           <h1>Here are your matches:</h1>
-          <h4>{{ currentUser.name }}</h4>
+          <h4>Name: {{ user.name }}</h4>
+          <h4>Email: {{ user.email }}</h4>
+          <h4>Matches: {{ user.dogs }}
         </div>
       </div>
     </div>
@@ -315,6 +248,61 @@
             <p>Activity level?: {{ dog.exercise }}</p>
             <a href="/#/">Back to user page</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<template id="survey-page">
+  <section class="bg-dark-30 showcase-page-header module parallax-bg">
+    <div class="titan-caption">
+      <div class="caption-content">
+        <div class="container, font-alt mb-30 titan-title-size-1">
+          <h1>Dog Matchup Survey</h1>
+          <br>
+
+          <div class="form-group">
+            <label>1. What is your zip code?</label>
+            <input type="text" class="form-control" v-model="zipCode">
+          </div>
+
+          <div class="form-group">
+            <label>2. What best describes your work situation?</label>
+            <input type="text" class="form-control" v-model="workHours">
+          </div>
+
+          <div class="form-group">
+            <label>3. What best describes your home?</label>
+            <input type="text" class="form-control" v-model="homeType">
+          </div>
+
+          <div class="form-group">
+            <label>4. Do you have allergies to certain breeds?</label>
+            <input type="text" class="form-control" v-model="allergies">
+          </div>
+
+          <div class="form-group">
+            <label>5. What is your noise tolerance on a scale of 1-5?</label>
+            <input type="text" class="form-control" v-model="noiseLevel">
+          </div>
+
+          <div class="form-group">
+            <label>6. Do you have kids?</label>
+            <input type="text" class="form-control" v-model="kids">
+          </div>
+
+          <div class="form-group">
+            <label>7. Do you have other pets?</label>
+            <input type="text" class="form-control" v-model="pets">
+          </div>
+
+          <div class="form-group">
+            <label>8. How would you best describe your lifestyle?</label>
+            <input type="text" class="form-control" v-model="activityLevel">
+          </div>
+
+          <a class="btn btn-border-w btn-round" v-on:click="submit()">Submit</a>
         </div>
       </div>
     </div>
