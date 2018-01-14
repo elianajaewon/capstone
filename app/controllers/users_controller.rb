@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: [:create] 
+  # before_action :authenticate_user, except: [:create] 
+
+  def show
+    user_id = params["id"]
+    user = User.find_by(id: user_id)
+    render json: {message: user.as_json}  
+  end
+
   def create 
     user = User.new(
       name: params[:name],

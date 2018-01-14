@@ -4,7 +4,7 @@ require "pp"
 while true
   system "clear"
   puts "Welcome to the Dogs App! Please select an option."
-  puts "[1] Show all dogs"
+  puts "[1] Show me my dogs"
   puts "[2] Search dogs by breed"
   puts "[3] Choose a dog breed to show"
   puts "[4] Fill out the survey!"
@@ -18,10 +18,10 @@ while true
   input_option = gets.chomp
 
   if input_option == "1"
-    response = Unirest.get("http://localhost:3000/dogs")
-    dogs = response.body 
-    pp dogs
-    puts current_user.dogs_with_incompatibilities
+    user_id = 3
+    response = Unirest.get("http://localhost:3000/users/#{user_id}")
+    user = response.body
+    pp user
   elsif input_option == "2"
     puts "Enter a dog breed."
     dog_breed = gets.chomp

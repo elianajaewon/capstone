@@ -15,11 +15,21 @@ class User < ApplicationRecord
       incompatibilities = []
       if work_hours == "I work 9-5" && dog.age == "puppy"
         incompatibilities << "not home enough"
+      elsif work_hours == "I work 9-5" && dog.age == "young"
+        incompatibilities << "not home enough"
       elsif home_type == "Apartment" && dog.size == "giant"
+        incompatibilities << "not enough space"
+      elsif home_type == "Apartment" && dog.size == "large"
         incompatibilities << "not enough space"
       elsif allergies == "yes" && dog.grooming == "sheds a lot"
         incompatibilities << "too sheddy" 
-      elsif noise_level.to_i < 3 && dog.bark_level == "very noisy"
+      elsif allergies == "yes" && dog.grooming == "sheds a little"
+        incompatibilities << "too sheddy"
+      elsif allergies == "some" && dog.grooming == "sheds a lot"
+        incompatibilities << "too sheddy" 
+      elsif noise_level.to_i < 2 && dog.bark_level == "very noisy"
+        incompatibilities << "too noisy"
+      elsif noise_level.to_i < 3 && dog.bark_level == "somewhat noisy"
         incompatibilities << "too noisy"
       elsif kids == "yes" && dog.kid_friendly == "no"
         incompatibilities << "not kid friendly"
@@ -27,6 +37,10 @@ class User < ApplicationRecord
         incompatibilities << "not pet friendly"
       elsif activity_level == "couch potato" && dog.exercise == "very active"
         incompatibilities << "too active"
+      elsif activity_level == "somewhat active" && dog.exercise == "very active"
+        incompatibilities << "too active"
+      elsif activity_level == "very active" && dog.exercise == "lazy"
+        incompatibilities << "too lazy"
       end
       dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}
     end
@@ -34,4 +48,12 @@ class User < ApplicationRecord
     return dogs
   end
 
+  def as_json
+    {
+      id: id,
+      name: name,
+      email: email,
+      dogs: dogs_with_incompatibilities
+    }
+  end
 end
