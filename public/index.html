@@ -263,56 +263,64 @@
 </template>
 
 <template id="survey-page">
-  <section class="bg-dark-30 showcase-page-header module parallax-bg">
-    <div class="titan-caption">
-      <div class="caption-content">
-        <div class="container, font-alt mb-30 titan-title-size-1">
-          <h1>Dog Matchup Survey</h1>
-          <br>
+  <div class="main">
+    <section class="module bg-dark-30 about-page-header" data-background="assets/images/survey2.jpg">
+    </section>
+    <section class="module">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h4 class="font-alt mb-0">Dog Matchup Survey</h4>
+            <hr class="divider-w mt-10 mb-20">
+            <form class="form" role="form">
+              <div class="form-group">
+                <label>1. What is your zip code?</label>
+                <input class="form-control input-lg" type="text" v-model="zipCode"/>
+              </div>
 
-          <div class="form-group">
-            <label>1. What is your zip code?</label>
-            <input type="text" class="form-control" v-model="zipCode">
+              <div class="form-group">
+                <label>2. What best describes your work situation?</label>
+                <input class="form-control input-lg" type="text" v-model="workHours"/>
+              </div>
+
+              <div class="form-group">
+                <label>3. What best describes your home?</label>
+                <input class="form-control input-lg" type="text" v-model="homeType"/>
+              </div>
+
+              <div class="form-group">
+                <label>4. Do you have allergies to certain breeds?</label>
+                <input class="form-control input-lg" type="text" v-model="allergies"/>
+              </div>
+
+              <div class="form-group">
+                <label>5. What is your noise tolerance on a scale of 1-5?</label>
+                <input class="form-control input-lg" type="text" v-model="noiseLevel"/>
+              </div>
+
+              <div class="form-group">
+                <label>6. Do you have kids?</label>
+                <input class="form-control input-lg" type="text" v-model="kids"/>
+              </div>
+
+              <div class="form-group">
+                <label>7. Do you have other pets?</label>
+                <input class="form-control input-lg" type="text" v-model="pets"/>
+              </div>
+
+              <div class="form-group">
+                <label>8. How would you best describe your lifestyle?</label>
+                <input class="form-control input-lg" type="text" v-model="activityLevel"/>
+              </div>
+
+            <div class="form-group">
+              <a class="btn btn-round btn-b" v-on:click="submit()">Submit</a>
+            </div>
+
+            </form>
           </div>
-
-          <div class="form-group">
-            <label>2. What best describes your work situation?</label>
-            <input type="text" class="form-control" v-model="workHours">
-          </div>
-
-          <div class="form-group">
-            <label>3. What best describes your home?</label>
-            <input type="text" class="form-control" v-model="homeType">
-          </div>
-
-          <div class="form-group">
-            <label>4. Do you have allergies to certain breeds?</label>
-            <input type="text" class="form-control" v-model="allergies">
-          </div>
-
-          <div class="form-group">
-            <label>5. What is your noise tolerance on a scale of 1-5?</label>
-            <input type="text" class="form-control" v-model="noiseLevel">
-          </div>
-
-          <div class="form-group">
-            <label>6. Do you have kids?</label>
-            <input type="text" class="form-control" v-model="kids">
-          </div>
-
-          <div class="form-group">
-            <label>7. Do you have other pets?</label>
-            <input type="text" class="form-control" v-model="pets">
-          </div>
-
-          <div class="form-group">
-            <label>8. How would you best describe your lifestyle?</label>
-            <input type="text" class="form-control" v-model="activityLevel">
-          </div>
-
-          <a class="btn btn-border-w btn-round" v-on:click="submit()">Submit</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
