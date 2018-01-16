@@ -286,42 +286,68 @@
             <form class="form" role="form">
               <div class="form-group">
                 <label>1. What is your zip code?</label>
-                <input class="form-control input-lg" type="text" v-model="zipCode"/>
+                <input class="form-control input-lg" type="select" v-model="zipCode"/>
               </div>
 
               <div class="form-group">
-                <label>2. What best describes your work situation?</label>
-                <input class="form-control input-lg" type="text" v-model="workHours"/>
+                <label>2. What best describes your work/home situation?</label>
+                <select class="form-control input-lg" type="text" v-model="workHours">
+                  <option value="I work 9-5">I work 9-5</option>
+                  <option value="I work from home">I work from home</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>3. What best describes your home?</label>
-                <input class="form-control input-lg" type="text" v-model="homeType"/>
+                <select class="form-control input-lg" type="text" v-model="homeType">
+                  <option value="House">I live in a house</option>
+                  <option value="Apartment">I live in an apartment</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>4. Do you have allergies to certain breeds?</label>
-                <input class="form-control input-lg" type="text" v-model="allergies"/>
+                <select class="form-control input-lg" type="text" v-model="allergies">
+                  <option value="Yes">Yes</option>
+                  <option value="Some">Some</option>
+                  <option value="No">None</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>5. What is your noise tolerance on a scale of 1-5?</label>
-                <input class="form-control input-lg" type="text" v-model="noiseLevel"/>
+                <select class="form-control input-lg" type="text" v-model="noiseLevel">
+                  <option value="1">1 (I can't stand a lot of noise)</option>
+                  <option value="2">2</option>
+                  <option value="3">3 (Some noise is okay)</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Noises don't bother me)</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>6. Do you have kids?</label>
-                <input class="form-control input-lg" type="text" v-model="kids"/>
+                <select class="form-control input-lg" type="text" v-model="kids">
+                  <option value="Yes">Yes</option>
+                  <option value="No">Hell nah</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>7. Do you have other pets?</label>
-                <input class="form-control input-lg" type="text" v-model="pets"/>
+                <select class="form-control input-lg" type="text" v-model="pets">
+                  <option value="Yes">Duh</option>
+                  <option value="No">Not yet</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>8. How would you best describe your lifestyle?</label>
-                <input class="form-control input-lg" type="text" v-model="activityLevel"/>
+                <select class="form-control input-lg" type="text" v-model="activityLevel">
+                  <option value="Very active">I love working out!</option>
+                  <option value="Somewhat active">I go outside sometimes</option>
+                  <option value="Couch potato">I prefer lounging on the couch</option>
+                </select>
               </div>
 
             <div class="form-group">

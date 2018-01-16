@@ -27,9 +27,6 @@ var UserPage = {
         this.user = response.data["message"];
       }.bind(this)
     );
-  },
-  mounted: function() {
-    initTheme();
   }
 };
 
