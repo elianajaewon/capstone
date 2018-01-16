@@ -27,6 +27,9 @@ var UserPage = {
         this.user = response.data["message"];
       }.bind(this)
     );
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 
@@ -43,25 +46,10 @@ var ShowPage = {
         this.dogs = response.data;
       }.bind(this)
     );
+  },
+  mounted: function() {
+    initTheme();
   }
-};
-
-var SearchPage = {
-  template: "#search-page",
-  data: function() {
-    return {
-      dogs: []
-    };
-  },
-  created: function() {
-    axios.get("/dogs/" + this.$route.params.id).then(
-      function(response) {
-        this.dog = response.data;
-      }.bind(this)
-    );
-  },
-  methods: {},
-  computed: {}
 };
 
 var SignupPage = {
@@ -94,6 +82,9 @@ var SignupPage = {
           }.bind(this)
         );
     }
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 
@@ -129,6 +120,9 @@ var LoginPage = {
           }.bind(this)
         );
     }
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 
@@ -192,6 +186,9 @@ var SurveyPage = {
           }.bind(this)
         );
     }
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 

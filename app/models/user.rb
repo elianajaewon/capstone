@@ -42,10 +42,16 @@ class User < ApplicationRecord
       elsif activity_level == "very active" && dog.exercise == "lazy"
         incompatibilities << "too lazy"
       end
-      dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}
+
+      if incompatibilities.length == 0 
+        dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}
+      # else
+      end
+      # dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}
     end
 
     return dogs
+
   end
 
   def as_json
