@@ -17,7 +17,8 @@ var UserPage = {
   template: "#user-page",
   data: function() {
     return {
-      user: ""
+      user: "",
+      randomDogs: []
     };
   },
   created: function() {
@@ -25,6 +26,13 @@ var UserPage = {
       function(response) {
         console.log("users page:", "/users/" + this.$route.params.id, response);
         this.user = response.data["message"];
+        this.randomDogs = this.user.dogs
+          .slice()
+          .sort(function() {
+            return 0.5 - Math.random();
+          })
+          .slice(0, 3);
+        console.log(response.data);
       }.bind(this)
     );
   }
@@ -41,6 +49,8 @@ var ShowPage = {
     axios.get("/dogs").then(
       function(response) {
         this.dogs = response.data;
+        console.log(this.dogs);
+        console.log(response.data);
       }.bind(this)
     );
   },
@@ -189,6 +199,23 @@ var SurveyPage = {
   }
 };
 
+var PetfinderPage = {
+  template: "#petfinder-page",
+  data: function() {
+    return {
+      matches: []
+    };
+  },
+  created: function() {
+    axios.get("/matches/" + this.$route.params.id).then(
+      function(response) {
+        this.matches = response.data.petfinder.pets.pet;
+        console.log(this.matches);
+      }.bind(this)
+    );
+  }
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
@@ -197,7 +224,8 @@ var router = new VueRouter({
     { path: "/logout", component: LogoutPage },
     { path: "/users/:id", component: UserPage },
     { path: "/show", component: ShowPage },
-    { path: "/survey/:id", component: SurveyPage }
+    { path: "/survey/:id", component: SurveyPage },
+    { path: "/matches/:id", component: PetfinderPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

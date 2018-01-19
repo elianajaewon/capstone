@@ -44,7 +44,7 @@ class User < ApplicationRecord
       end
 
       if incompatibilities.length == 0 
-        dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}
+        dogs << {id: dog.id, breed: dog.breed, description: dog.description, incompatibilities: incompatibilities}
       # else
       end
       # dogs << {id: dog.id, breed: dog.breed, incompatibilities: incompatibilities}

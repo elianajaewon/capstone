@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/users/:id" => "users#show"
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"
+  get "/matches/:id" => "users#matches"
 
   get "/dogs" => "dogs#index"
   get "/dogs/:id" => "dogs#show"

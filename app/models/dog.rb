@@ -33,6 +33,8 @@ class Dog < ApplicationRecord
       kids: kids,
       pets: pets,
       exercise: exercise,
+      description: description,
+      image: image
       # incompatibilities: incompatibilities
     }
   end

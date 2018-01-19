@@ -47,4 +47,11 @@ class UsersController < ApplicationController
       render json: {message: "Please log in first."}
     end
   end
+
+  def matches
+    input_breed = Dog.find_by(id: params[:id]).breed
+    input_zip_code = current_user.zip_code
+    response = Unirest.get("http://api.petfinder.com/pet.find?key=#{ENV['API_KEY']}&animal=dog&breed=#{input_breed}&location=#{input_zip_code}&format=json")
+    render json: response.body
+  end
 end

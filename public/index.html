@@ -206,21 +206,29 @@
 
 <template id="user-page">
   <div class="main">
-    <section class="module bg-dark-60 gallery-page-header parallax-bg" data-background="assets/images/user.jpg">
+    <section class="module bg-dark-30 about-page-header" data-background="assets/images/user.jpg">
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <h2 class="module-title font-alt">Here are your matches!</h2>
+            <h1 class="module-title font-alt mb-0"></h1>
           </div>
         </div>
       </div>
     </section>
     <section class="module">
       <div class="container">
-        <div class="row multi-columns-row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div v-for="dog in user.dogs">
-            <h4>{{ dog.breed }} </h4>
+        <div class="row">
+          <h4 class="font-alt mt-40 mb-0">Here are your matches!</h4>
+          <hr class="divider-w mt-10 mb-20">
+          <div class="row multi-columns-row mb-70">
+            <div class="col-sm-4" v-for="dog in randomDogs">
+              <div class="content-box">
+                <div class="content-box-image"><img :src="dog.image"/></div>
+                <h3 class="content-box-title font-serif">{{ dog.breed }}</h3>
+                <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ dog.description }}
+                </div>
+              </div>
+              <a class="btn btn-block btn-round btn-b" v-bind:href="'/#/matches/' + dog.id">View Adoptable Dogs!</a>
             </div>
           </div>
         </div>
@@ -234,7 +242,7 @@
     <section class="module bg-dark-60 shop-page-header" data-background="assets/images/show.jpg">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
+          <div class="col-sm-3 col-sm-offset-3">
             <h2 class="module-title font-alt">Dog Breeds</h2>
           </div>
         </div>
@@ -243,18 +251,18 @@
     <hr class="divider-w">
     <section class="module-small">
       <div class="container">
-        <div v-for="dog in dogs">
         <div class="row multi-columns-row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="col-sm-6" v-for="dog in dogs">
             <div class="shop-item">
-              <div class="shop-item-image"><img src="assets/images/affenpinscher.jpg"/>
+              <div class="shop-item-image">
+                <img :src="dog.image" style="height:auto;width:auto;"/>
               </div>
                 <h4 class="shop-item-title font-alt">{{ dog.breed }}</h4>
-                {{ dog.description }}
+                <div style="height:px;width:100%;border:3px;overflow:auto;">{{ dog.description }}
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   </div>
@@ -290,15 +298,7 @@
               </div>
 
               <div class="form-group">
-                <label>2. What best describes your work/home situation?</label>
-                <select class="form-control input-lg" type="text" v-model="workHours">
-                  <option value="I work 9-5">I work 9-5</option>
-                  <option value="I work from home">I work from home</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>3. What best describes your home?</label>
+                <label>2. What best describes your home?</label>
                 <select class="form-control input-lg" type="text" v-model="homeType">
                   <option value="House">I live in a house</option>
                   <option value="Apartment">I live in an apartment</option>
@@ -306,18 +306,18 @@
               </div>
 
               <div class="form-group">
-                <label>4. Do you have allergies to certain breeds?</label>
+                <label>3. Do you have any dog allergies?</label>
                 <select class="form-control input-lg" type="text" v-model="allergies">
                   <option value="Yes">Yes</option>
-                  <option value="Some">Some</option>
+                  <option value="Some">Some breeds</option>
                   <option value="No">None</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label>5. What is your noise tolerance on a scale of 1-5?</label>
+                <label>4. What is your noise tolerance on a scale of 1-5?</label>
                 <select class="form-control input-lg" type="text" v-model="noiseLevel">
-                  <option value="1">1 (I can't stand a lot of noise)</option>
+                  <option value="1">1 (I can't stand noise)</option>
                   <option value="2">2</option>
                   <option value="3">3 (Some noise is okay)</option>
                   <option value="4">4</option>
@@ -326,7 +326,7 @@
               </div>
 
               <div class="form-group">
-                <label>6. Do you have kids?</label>
+                <label>5. Do you have kids?</label>
                 <select class="form-control input-lg" type="text" v-model="kids">
                   <option value="Yes">Yes</option>
                   <option value="No">Hell nah</option>
@@ -334,7 +334,7 @@
               </div>
 
               <div class="form-group">
-                <label>7. Do you have other pets?</label>
+                <label>6. Do you have other pets?</label>
                 <select class="form-control input-lg" type="text" v-model="pets">
                   <option value="Yes">Duh</option>
                   <option value="No">Not yet</option>
@@ -342,7 +342,7 @@
               </div>
 
               <div class="form-group">
-                <label>8. How would you best describe your lifestyle?</label>
+                <label>7. How would you best describe your activity levels?</label>
                 <select class="form-control input-lg" type="text" v-model="activityLevel">
                   <option value="Very active">I love working out!</option>
                   <option value="Somewhat active">I go outside sometimes</option>
@@ -355,6 +355,40 @@
             </div>
 
             </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<template id="petfinder-page">
+  <div class="main">
+    <section class="module bg-dark-30 about-page-header" data-background="assets/images/user.jpg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <h1 class="module-title font-alt mb-0"></h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="module">
+      <div class="container">
+        <div class="row">
+          <h4 class="font-alt mt-40 mb-0">Adoptable Dogs In Your Area!</h4>
+          <hr class="divider-w mt-10 mb-20">
+          <div class="row multi-columns-row mb-70">
+            <div class="col-sm-4" v-for="match in matches">
+              <div class="content-box">
+                <div class="content-box-image"><img :src="match.media.photos"/></div>
+                <h3 class="content-box-title font-serif">{{ match.name }}</h3>
+                <h3 class="content-box-title font-serif">{{ match.breeds.breed }}</h3>
+                <h3 class="content-box-title font-serif">{{ match.sex }}, {{ match.age }}</h3>
+                <div style="height:400px;width:auto;border:3px;overflow:auto;">{{ match.description }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
