@@ -35,6 +35,9 @@ var UserPage = {
         console.log(response.data);
       }.bind(this)
     );
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 
@@ -48,7 +51,11 @@ var ShowPage = {
   created: function() {
     axios.get("/dogs").then(
       function(response) {
-        this.dogs = response.data;
+        this.dogs = response.data.sort(function(a, b) {
+          if (a.breed < b.breed) return -1;
+          if (a.breed > b.breed) return 1;
+          return 0;
+        });
         console.log(this.dogs);
         console.log(response.data);
       }.bind(this)
@@ -209,10 +216,17 @@ var PetfinderPage = {
   created: function() {
     axios.get("/matches/" + this.$route.params.id).then(
       function(response) {
-        this.matches = response.data.petfinder.pets.pet;
+        if (response.data.petfinder.pets.pet.length > 1) {
+          this.matches = response.data.petfinder.pets.pet;
+        } else {
+          this.matches.push(response.data.petfinder.pets.pet);
+        }
         console.log(this.matches);
       }.bind(this)
     );
+  },
+  mounted: function() {
+    initTheme();
   }
 };
 

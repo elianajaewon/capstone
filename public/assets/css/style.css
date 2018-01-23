@@ -2523,12 +2523,17 @@ Google map
 }
 
 .shop-item-image img {
-  width: 100%;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+/*  padding-top: 100%;*/
 }
 
 .shop-item-detail,
-.shop-item-image:after {
-  transition: all 0.4s ease-in-out 0s;
+.shop-item-image/*:after {
+  transition: all 0.4s ease-in-out 0s;*/
 }
 
 .shop-item-image:after {

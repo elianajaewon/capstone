@@ -252,13 +252,13 @@
     <section class="module-small">
       <div class="container">
         <div class="row multi-columns-row">
-          <div class="col-sm-6" v-for="dog in dogs">
-            <div>
-              <div>
-                <img :src="dog.image" style="height:auto;width:auto;"/>
+          <div class="col-sm-4" v-for="dog in dogs">
+            <div class="shop-item">
+              <div class="shop-item-image">
+                <img :src="dog.image" style="max-height:100%;max-width:100%;"/>
               </div>
                 <h4 class="shop-item-title font-alt">{{ dog.breed }}</h4>
-                <div style="height:px;width:100%;border:3px;overflow:auto;">{{ dog.description }}
+                <div style="height:200px;width:100%;border:3px;overflow:auto;">{{ dog.description }}
                 </div>
               </div>
             </div>
@@ -381,11 +381,18 @@
           <div class="row multi-columns-row mb-70">
             <div class="col-sm-4" v-for="match in matches">
               <div class="content-box">
-                <div class="content-box-image"><img :src="match.media.photos"/></div>
-                <h3 class="content-box-title font-serif">{{ match.name }}</h3>
-                <h3 class="content-box-title font-serif">{{ match.breeds.breed }}</h3>
-                <h3 class="content-box-title font-serif">{{ match.sex }}, {{ match.age }}</h3>
-                <div style="height:400px;width:auto;border:3px;overflow:auto;">{{ match.description }}
+                <!-- <div class="content-box-image"><img :src="match.media.photos.photo.$t"/></div> -->
+                <h2 class="content-box-title font-serif">{{ match.name.$t }}</h2>
+                <h3 class="content-box-title font-serif">{{ match.breeds.breed.$t }}</h3>
+                <h3 class="content-box-title font-serif">{{ match.sex.$t }}, {{ match.age.$t }}</h3>
+                <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ match.description.$t }}
+                  <br>
+                  <br>
+                  CONTACT INFO: 
+                  <br>
+                {{ match.contact.email.$t }}
+                  <br>
+                {{ match.contact.city.$t }}, {{ match.contact.state.$t }}
                 </div>
               </div>
             </div>
