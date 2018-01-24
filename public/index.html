@@ -222,8 +222,8 @@
           <hr class="divider-w mt-10 mb-20">
           <div class="row multi-columns-row mb-70">
             <div class="col-sm-4" v-for="dog in randomDogs">
-              <div class="content-box">
-                <div class="content-box-image"><img :src="dog.image"/></div>
+              <div class="well" style="height: 500px; background-color: white; border-style: none; outline: 0; !important;">
+                <div class="content-box-image"><img :src="dog.image" style="max-height: 200px; max-width: 100%; height: auto; width: auto;"/></div>
                 <h3 class="content-box-title font-serif">{{ dog.breed }}</h3>
                 <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ dog.description }}
                 </div>
@@ -255,7 +255,7 @@
           <div class="col-sm-4" v-for="dog in dogs">
             <div class="shop-item">
               <div class="shop-item-image">
-                <img :src="dog.image" style="max-height:100%;max-width:100%;"/>
+                <img :src="dog.image" style="max-height: 200px; max-width: 100%; height: auto; width: auto;"/>
               </div>
                 <h4 class="shop-item-title font-alt">{{ dog.breed }}</h4>
                 <div style="height:200px;width:100%;border:3px;overflow:auto;">{{ dog.description }}
@@ -284,12 +284,21 @@
 <template id="survey-page">
   <div class="main">
     <section class="module bg-dark-30 about-page-header" data-background="assets/images/survey2.jpg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-sm-offset-3">
+            <h2 class="module-title font-alt"></h2>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="module">
       <div class="container">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h4 class="font-alt mb-0">Dog Matchup Survey</h4>
+            <h4 class="font-alt mb-0">Fill out the survey as best as you can.</h4>
             <hr class="divider-w mt-10 mb-20">
             <form class="form" role="form">
               <div class="form-group">
@@ -329,7 +338,7 @@
                 <label>5. Do you have kids?</label>
                 <select class="form-control input-lg" type="text" v-model="kids">
                   <option value="Yes">Yes</option>
-                  <option value="No">Hell nah</option>
+                  <option value="No">No</option>
                 </select>
               </div>
 
@@ -378,21 +387,24 @@
         <div class="row">
           <h4 class="font-alt mt-40 mb-0">Adoptable Dogs In Your Area!</h4>
           <hr class="divider-w mt-10 mb-20">
+          <h1>{{ errorMessage }}</h1>
           <div class="row multi-columns-row mb-70">
             <div class="col-sm-4" v-for="match in matches">
-              <div class="content-box">
-                <!-- <div class="content-box-image"><img :src="match.media.photos.photo.$t"/></div> -->
-                <h2 class="content-box-title font-serif">{{ match.name.$t }}</h2>
-                <h3 class="content-box-title font-serif">{{ match.breeds.breed.$t }}</h3>
-                <h3 class="content-box-title font-serif">{{ match.sex.$t }}, {{ match.age.$t }}</h3>
-                <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ match.description.$t }}
+              <div class="well" style="height: 800px; background-color: white; border-style: none; outline: 0; !important;">
+                <div class="content-box-image">
+                  <img :src="match.photo ? match.photo : '/assets/images/rp-4.jpg'" style="max-height: 300px; max-width: 100%; height: auto; width: auto;"/>
+                </div>
+                <h2 class="font-alt mt-40 mb-0">{{ match.name }}</h2>
+                <h3 class="content-box-title font-serif">{{ match.breed }}</h3>
+                <h3 class="content-box-title font-serif">{{ match.sex }}, {{ match.age }}</h3>
+                <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ match.description }}
                   <br>
                   <br>
                   CONTACT INFO: 
                   <br>
-                {{ match.contact.email.$t }}
+                {{ match.email }}
                   <br>
-                {{ match.contact.city.$t }}, {{ match.contact.state.$t }}
+                {{ match.city }}, {{ match.state }}
                 </div>
               </div>
             </div>

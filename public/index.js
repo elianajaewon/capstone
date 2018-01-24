@@ -210,18 +210,41 @@ var PetfinderPage = {
   template: "#petfinder-page",
   data: function() {
     return {
-      matches: []
+      matches: [],
+      errorMessage: ""
     };
   },
   created: function() {
     axios.get("/matches/" + this.$route.params.id).then(
       function(response) {
-        if (response.data.petfinder.pets.pet.length > 1) {
-          this.matches = response.data.petfinder.pets.pet;
+        var data = [];
+        console.log(
+          "gonna loop",
+          response.data.petfinder.pets,
+          response.data.petfinder.pets.pet
+        );
+        if (response.data.petfinder.pets.pet) {
+          response.data.petfinder.pets.pet.forEach(function(pet) {
+            var info = {};
+            info.name = pet.name.$t;
+            info.breed = pet.breeds.breed.$t;
+            info.sex = pet.sex.$t;
+            info.age = pet.age.$t;
+            info.description = pet.description.$t;
+            info.email = pet.contact.email.$t;
+            info.city = pet.contact.city.$t;
+            info.state = pet.contact.state.$t;
+            if (pet.media.photos) {
+              info.photo = pet.media.photos.photo[2].$t;
+            } else {
+              info.photo = "assets/images/filler.jpg";
+            }
+            data.push(info);
+          });
+          this.matches = data;
         } else {
-          this.matches.push(response.data.petfinder.pets.pet);
+          this.errorMessage = "No matches found!";
         }
-        console.log(this.matches);
       }.bind(this)
     );
   },
