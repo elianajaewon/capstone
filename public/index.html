@@ -192,10 +192,7 @@
               <div class="form-group">
                 <input class="form-control" id="password" type="password" name="password" placeholder="Password" v-model="password"/>
               </div>
-              <div class="form-group">
                 <a class="btn btn-round btn-b" v-on:click="submit()">Submit</a>
-              </div>
-              <div class="form-group"><a href="">Forgot Password?</a></div>
             </form>
           </div>
         </div>
@@ -399,10 +396,12 @@
           <h1>{{ errorMessage }}</h1>
           <div class="row multi-columns-row mb-70">
             <div class="col-sm-4" v-for="match in matches">
-              <div class="well" style="height: 800px; background-color: white; border-style: none; outline: 0; !important;">
+              <div class="well" style="height: 275px; background-color: white; border-style: none; outline: 0; !important;">
                 <div class="content-box-image">
-                  <img :src="match.photo ? match.photo : '/assets/images/rp-4.jpg'" style="max-height: 300px; max-width: 100%; height: auto; width: auto;"/>
+                  <img :src="match.photo ? match.photo : '/assets/images/rp-4.jpg'" style="max-height: 275px; max-width: 100%; height: auto; width: auto;"/>
                 </div>
+              </div>
+              <div class="well" style="height: 500px; background-color: white; border-style: none; outline: 0; !important;">
                 <h2 class="font-alt mt-40 mb-0">{{ match.name }}</h2>
                 <h3 class="content-box-title font-serif">{{ match.breed }}</h3>
                 <h3 class="content-box-title font-serif">{{ match.sex }}, {{ match.age }}</h3>
@@ -411,7 +410,7 @@
                   <br>
                   CONTACT INFO: 
                   <br>
-                <a href="mailto:match.email?Subject=match.name Inquiry" target="_top">{{ match.email }}</a>
+                <a v-bind:href="'mailto:' + match.email + '?Subject=' + match.name + ' Inquiry'" target="_top">{{ match.email }}</a>
                   <br>
                 {{ match.city }}, {{ match.state }}
                 </div>
