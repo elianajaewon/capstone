@@ -45,7 +45,8 @@ var ShowPage = {
   template: "#show-page",
   data: function() {
     return {
-      dogs: []
+      dogs: [],
+      breedFilter: ""
     };
   },
   created: function() {
@@ -60,6 +61,13 @@ var ShowPage = {
         console.log(response.data);
       }.bind(this)
     );
+  },
+  methods: {
+    isValidDog: function(inputDog) {
+      return inputDog.breed
+        .toLowerCase()
+        .includes(this.breedFilter.toLowerCase());
+    }
   },
   mounted: function() {
     initTheme();

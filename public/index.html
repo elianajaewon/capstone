@@ -222,13 +222,13 @@
           <hr class="divider-w mt-10 mb-20">
           <div class="row multi-columns-row mb-70">
             <div class="col-sm-4" v-for="dog in randomDogs">
-              <div class="well" style="height: 500px; background-color: white; border-style: none; outline: 0; !important;">
+              <div class="well" style="height: 475px; background-color: white; border-style: none; outline: 0; !important;">
                 <div class="content-box-image"><img :src="dog.image" style="max-height: 200px; max-width: 100%; height: auto; width: auto;"/></div>
                 <h3 class="content-box-title font-serif">{{ dog.breed }}</h3>
                 <div style="height:200px;width:auto;border:3px;overflow:auto;">{{ dog.description }}
                 </div>
               </div>
-              <a class="btn btn-block btn-round btn-b" v-bind:href="'/#/matches/' + dog.id">View Adoptable Dogs!</a>
+              <a class="btn btn-block btn-round btn-b" v-bind:href="'/#/matches/' + dog.id" target="_blank">View Adoptable Dogs!</a>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-3 col-sm-offset-3">
-            <h2 class="module-title font-alt">Dog Breeds</h2>
+            <h2 class="module-title font-alt">All Dog Breeds</h2>
           </div>
         </div>
       </div>
@@ -251,11 +251,20 @@
     <hr class="divider-w">
     <section class="module-small">
       <div class="container">
+        <input type="text" v-model="breedFilter" placeholder="Search by breed" list="breeds">
+        <datalist id="breeds">
+          <option v-for="dog in dogs" style="font-family:Open Sans;">{{ dog.breed }}</option>
+        </datalist>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="row multi-columns-row">
-          <div class="col-sm-4" v-for="dog in dogs">
+          <div class="col-sm-4" v-for="dog in dogs" v-if="isValidDog(dog)" >
             <div class="shop-item">
               <div class="shop-item-image">
-                <img :src="dog.image" style="max-height: 200px; max-width: 100%; height: auto; width: auto;"/>
+                <img :src="dog.image" style="max-height: 200px; max-width: 100%; height: auto; width: auto; margin-left: 75px; margin-right: 75px"/>
               </div>
                 <h4 class="shop-item-title font-alt">{{ dog.breed }}</h4>
                 <div style="height:200px;width:100%;border:3px;overflow:auto;">{{ dog.description }}
@@ -402,7 +411,7 @@
                   <br>
                   CONTACT INFO: 
                   <br>
-                {{ match.email }}
+                <a href="mailto:match.email?Subject=match.name Inquiry" target="_top">{{ match.email }}</a>
                   <br>
                 {{ match.city }}, {{ match.state }}
                 </div>
